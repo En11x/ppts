@@ -11,7 +11,7 @@ fonts:
 # Presentation title?
 ---
 
-# What is Slidev?
+# 定义
 
 Rest是一种用于设计网络应用程序的架构风格,最早由Roy Thomas Fielding在2000年提出：将一个功能强、性能好、适宜通信的架构命名为Rest。
 <br/>
@@ -21,6 +21,7 @@ Representational State Transfer的缩写，即:表现层状态转化
 - 表现层：资源具体呈现出来的形式，在http请求头中用accept和content-type来描述。eg:文本可以txt格式表现出来，也可以按照html、json等格式
 - 状态转换：客户端与服务端通信过程势必会发生数据和状态的转变。（get|post|put|delete）
 
+<img v-after  border="rounded" src="http://127.0.0.1:5500/imgs/rest/cs.png" />
 
 <style>
 h1 {
@@ -32,26 +33,21 @@ h1 {
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
 }
+img{
+  width:100%;
+  height:270px;
+}
 </style>
 ---
 
-# Restful api
+# restful架构的原则
 
-<img v-after border="rounded" src= "/imgs/rest/rest_api.svg" />
-
-
-### Keyboard Shortcuts
-
-<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
-
----
-layout: image-right
-image: https://source.unsplash.com/collection/94734566/1920x1080
----
-
-# Code
-
-Use code snippets and get the highlighting directly![^1]
+- 统一接口
+- 客户端-服务器设计模式
+- 无状态
+- 可缓存
+- 分层系统
+- 按需编码
 
 ```ts {all|2|1-6|9|all}
 interface User {
@@ -86,7 +82,21 @@ function updateUser(id: number, update: User) {
 
 ---
 
-# Components
+# Restful api
+
+<img v-after border="rounded" src= "http://127.0.0.1:5500/imgs/rest/rest_api.svg" />
+
+
+### Keyboard Shortcuts
+
+<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
+
+---
+layout: image-right
+image: https://source.unsplash.com/collection/94734566/1920x1080
+---
+
+# 资源
 
 <div grid="~ cols-2 gap-4">
 <div>
@@ -121,7 +131,7 @@ Check out [the guides](https://sli.dev/builtin/components.html) for more.
 class: px-20
 ---
 
-# Themes
+# 如何设计restful API
 
 Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
 
@@ -226,7 +236,7 @@ const final = {
 
 ---
 
-# LaTeX
+# restful架构优缺点
 
 LaTeX is supported out-of-box powered by [KaTeX](https://katex.org/).
 
@@ -254,7 +264,7 @@ $$
 
 ---
 
-# Diagrams
+# 总结
 
 You can create diagrams / graphs from textual descriptions, directly in your Markdown.
 
