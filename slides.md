@@ -1,14 +1,14 @@
 ---
 theme: apple-basic
 layout: statement
-highlighter: prism
+highlighter: shiki
 fonts:
-  sans: 'Roboto'
-  serif: 'Roboto Slab'
-  mono: 'Fira Code'
+  mono: Input Mono
 ---
 
-# Presentation title?
+# What is Rest?
+
+
 ---
 
 # 定义
@@ -16,12 +16,19 @@ fonts:
 Rest是一种用于设计网络应用程序的架构风格,最早由Roy Thomas Fielding在2000年提出：将一个功能强、性能好、适宜通信的架构命名为Rest。
 <br/>
 <br/>
+
+<div v-click="1">
 Representational State Transfer的缩写，即:表现层状态转化
+</div>
+
+<v-clicks at="2">
 
 - 表现层：资源具体呈现出来的形式，在http请求头中用accept和content-type来描述。eg:文本可以txt格式表现出来，也可以按照html、json等格式
 - 状态转换：客户端与服务端通信过程势必会发生数据和状态的转变。（get|post|put|delete）
 
-<img v-after  border="rounded" src="http://127.0.0.1:5500/imgs/rest/cs.png" />
+</v-clicks>
+
+<img v-click="3" border="rounded" src="http://127.0.0.1:5500/imgs/rest/cs.png" />
 
 <style>
 h1 {
@@ -42,285 +49,193 @@ img{
 
 # restful架构的原则
 
+<div class="grid grid-cols-2 gap-x-4 gap-y-4">
+
+<v-clicks at="1">
+
 - 统一接口
+  - 一切 RESTful Web 服务设计的基础
+  - 通过资源标识：接口必须唯一标识客户端和服务器之间涉及的资源
+  - 通过操作标识资源：get|post|put|delete
+  - 自描述信息:每个资源标识应携带足够的信息来描述如何处理消息
 - 客户端-服务器设计模式
 - 无状态
+  - 要求客户端到服务器的每个请求必须包含理解和完成请求所需的所有信息。
+
+</v-clicks>
+
+<v-clicks at="4">
+
 - 可缓存
+  - http缓存策略，响应可以隐性或显式的将自身标记为可缓存或不可缓存
 - 分层系统
+  - 允许通过约束组件行为来由分层组成架构
+  - 通过分层和解耦来降低系统的复杂度
 - 按需编码
+  - 允许通过已小程序或脚本的形式下载和执行代码来扩展客户端功能
 
-```ts {all|2|1-6|9|all}
-interface User {
-  id: number
-  firstName: string
-  lastName: string
-  role: string
-}
+</v-clicks>
 
-function updateUser(id: number, update: User) {
-  const user = getUser(id)
-  const newUser = { ...user, ...update }
-  saveUser(id, newUser)
-}
-```
-
-<arrow v-click="3" x1="400" y1="420" x2="230" y2="330" color="#564" width="3" arrowSize="1" />
-
-[^1]: [Learn More](https://sli.dev/guide/syntax.html#line-highlighting)
-
-<style>
-.footnotes-sep {
-  @apply mt-20 opacity-10;
-}
-.footnotes {
-  @apply text-sm opacity-75;
-}
-.footnote-backref {
-  display: none;
-}
-</style>
+</div>
 
 ---
 
 # Restful api
 
-<img v-after border="rounded" src= "http://127.0.0.1:5500/imgs/rest/rest_api.svg" />
+### 遵循rest架构风格的api称为restful api
 
+<br>
+<br>
+<br>
 
-### Keyboard Shortcuts
+<v-clicks at="1">
 
-<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
+<img  border="rounded" src= "http://127.0.0.1:5500/imgs/rest/rest_api.svg" />
 
----
-layout: image-right
-image: https://source.unsplash.com/collection/94734566/1920x1080
----
+</v-clicks>
 
-# 资源
+<v-clicks at="2">
 
-<div grid="~ cols-2 gap-4">
-<div>
-
-You can use Vue components directly inside your slides.
-
-We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that you can use directly. And adding your custom components is also super easy.
-
-```html
-<Counter :count="10" />
-```
-
-<!-- ./components/Counter.vue -->
-<Counter :count="10" m="t-4" />
-
-Check out [the guides](https://sli.dev/builtin/components.html) for more.
-
-</div>
-<div>
-
-```html
-<Tweet id="1390115482657726468" />
-```
-
-<Tweet id="1390115482657726468" scale="0.65" />
-
-</div>
-</div>
-
-
----
-class: px-20
----
-
-# 如何设计restful API
-
-Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
-
-<div grid="~ cols-2 gap-2" m="-t-2">
-
-```yaml
----
-theme: default
----
-```
-
-```yaml
----
-theme: seriph
----
-```
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-default/01.png?raw=true">
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true">
-
-</div>
-
-Read more about [How to use a theme](https://sli.dev/themes/use.html) and
-check out the [Awesome Themes Gallery](https://sli.dev/themes/gallery.html).
-
----
-preload: false
----
-
-# Animations
-
-Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
-
-```html
-<div
-  v-motion
-  :initial="{ x: -80 }"
-  :enter="{ x: 0 }">
-  Slidev
-</div>
-```
-
-<div class="w-60 relative mt-6">
-  <div class="relative w-40 h-40">
-    <img
-      v-motion
-      :initial="{ x: 800, y: -100, scale: 1.5, rotate: -50 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-square.png"
-    />
-    <img
-      v-motion
-      :initial="{ y: 500, x: -100, scale: 2 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-circle.png"
-    />
-    <img
-      v-motion
-      :initial="{ x: 600, y: 400, scale: 2, rotate: 100 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-triangle.png"
-    />
-  </div>
-
-  <div
-    class="text-5xl absolute top-14 left-40 text-[#2B90B6] -z-1"
-    v-motion
-    :initial="{ x: -80, opacity: 0}"
-    :enter="{ x: 0, opacity: 1, transition: { delay: 2000, duration: 1000 } }">
-    Slidev
-  </div>
-</div>
-
-<!-- vue script setup scripts can be directly used in markdown, and will only affects current page -->
-<script setup lang="ts">
-const final = {
-  x: 0,
-  y: 0,
-  rotate: 0,
-  scale: 1,
-  transition: {
-    type: 'spring',
-    damping: 10,
-    stiffness: 20,
-    mass: 2
-  }
-}
-</script>
-
-<div
-  v-motion
-  :initial="{ x:35, y: 40, opacity: 0}"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 3500 } }">
-
-[Learn More](https://sli.dev/guide/animations.html#motion)
-
-</div>
-
----
-
-# restful架构优缺点
-
-LaTeX is supported out-of-box powered by [KaTeX](https://katex.org/).
+帮助我们与服务器之间通信的“语言”。
 
 <br>
 
-Inline $\sqrt{3x-1}+(1+x)^2$
+rest api 是一套api设计的准则，规范了api设计的框架，使得服务器、客户端之间有一个通用的沟通语言
 
-Block
-$$
-\begin{array}{c}
+</v-clicks>
 
-\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} &
-= \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} & = 4 \pi \rho \\
+---
 
-\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t} & = \vec{\mathbf{0}} \\
+# 如何设计restful api
 
-\nabla \cdot \vec{\mathbf{B}} & = 0
+<v-clicks at="1">
 
-\end{array}
-$$
+restful api 规范了api设计的两大核心原则：
+1. API应该作用于 Resource（资源）上
+2. 对资源的操作应使用对应语义的几种操作，包括： GET, POST, PUT, PATCH, DELETE1
+
+在设计时选择正确的资源并以正确的粒度对资源进行建模非常重要，以便 API 使用者从 API 获得所需的功能，API 行为正确且 API 可维护
+<br>
+
+什么是资源？？
+<br>
+资源是不同的应用程序向其客户端提供的信息。资源可以是图像、视频、文本、数字或任何类型的数据。
+<br>
+任何的信息在REST架构里都被抽象为资源：图像、文档、集合、用户，等，REST通过资源标识符来和特定资源进行交互.对于资源的命名，通常使用名词的复数形式
 
 <br>
 
-[Learn more](https://sli.dev/guide/syntax#latex)
+资源是对一组实体的概念映射，而不是在任何特定时间点对应于映射的实体，
+选择资源的起点是分析业务领域并提取与业务需求相关的名词
+
+</v-clicks>
+
+
+---
+
+
+<div class="grid grid-cols-2 gap-x-4 gap-y-4">
+
+<div v-click="1">
+
+通常path组成如下:
+
+```javascript
+/{version}/{resources}/{resource_id}
+```
+version：API版本号，有些版本号放置在头信息中也可以，通过控制版本号有利于应用迭代。
+<br>
+resources：资源，RESTful API推荐用小写英文单词的复数形式。
+<br>
+resource_id：资源的id，访问或操作该资源。
+
+若有的时候资源的级别较大，下面可以分为很多子资源,最多两层资源，太多导致path太长，尽量保证简洁：
+```javascript
+/{version}/{resources}/{resource_id}/{subresources}/{subresource_id}
+```
+
+若简单的增删改查不满足需求，可以增加action,命名同样遵循http方法一样,get就是get而不是getById,例如batch：
+```javascript
+/{version}/{resources}/{resource_id}?action=batch
+```
+
+</div>
+
+<div v-click="2">
+
+具体设计规则如下：
+1. 不用大写字母，所有单词使用英文且小写。
+2. 连字符用中杠"-"而不用下杠"_"
+3. 正确使用 "/"表示层级关系,URL的层级不要过深，并且越靠前的层级应该相对越稳定
+4. 结尾不要包含正斜杠分隔符"/"
+5. URL中不出现动词，用请求方式表示动作
+6. 资源表示用复数不要用单数
+7. 不要使用文件扩展名
+
+</div>
+
+</div>
+
+---
+
+## 防止将业务逻辑迁移到api使用者
+
+<v-clicks at="1">
+
+如果你的api设计细粒度程度到对每个文档进行crud，面向 CRUD 的低级方法将业务逻辑放在客户端代码中，在客户端（API 使用者）和它不应该关心的服务（API）之间创建紧密耦合,每当业务逻辑发生变化时，所有 API 使用者都必须更改代码并重新部署系统.
+
+<br>
+
+eg: 流程A:需要对a,b文档进行操作。api使用者则需要调用ab文档的更新接口，使得api使用者也要去关心流程A里的业务操作。若果流程A变更了，增加了对c文档的更新。则api使用者需要修改代码和重新部署。
+
+<br>
+
+解决方法:对于跨越多个资源的复杂业务流程，可以将业务流程视为资源本身，api使用者只需要对这个资源进行操作，则不需要关心背后到底操作了多少文档。
+
+</v-clicks>
+
+---
+
+## 摆脱低级的CRUD
+
+<v-clicks at="1">
+
+如果你的api设计全是单纯的curd,那你的服务就允许外部随便来put和delete你的资源状态，那你的服务感觉上就变成了一个低级的数据库。
+
+<br>
+
+随着业务越来越复杂，我们系统的api已经不单单是对文档的curd了，涉及了很多复杂的业务操作。
+
+eg: 更新站点api，不仅仅是更新站点model这么简单，背后有很多其他的逻辑，那我们就可以将更新站点视为一个业务流程或者领域事件，将这一操作视为资源本身。将里面其他的逻辑也抽象为某个业务流程资源，这样就使更新站点里的代码逻辑更加清晰。
+
+<br>
+
+解决方法：围绕基于业务流程和领域事件的资源设计 API。
+
+<br>
+<br>
+
+</v-clicks>
 
 ---
 
 # 总结
 
-You can create diagrams / graphs from textual descriptions, directly in your Markdown.
+<v-clicks at="1">
 
-<div class="grid grid-cols-3 gap-10 pt-4 -mb-6">
+<br>
+<br>
+<br>
 
-```mermaid {scale: 0.5}
-sequenceDiagram
-    Alice->John: Hello John, how are you?
-    Note over Alice,John: A typical interaction
-```
+在 REST 架构风格中，数据和功能被视为资源，并使用 统一资源标识符 (URI) 进行访问
 
-```mermaid {theme: 'neutral', scale: 0.8}
-graph TD
-B[Text] --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
-```
+api的设计不能仅仅局限于低级crud建立资源，在复杂业务流程面前应该围绕具体事件进行资源的抽象。
 
-```plantuml {scale: 0.7}
-@startuml
+restful api使一种风格，而不是规则或约束，过于理想的restful API会付出比较大的成本。
 
-package "Some Group" {
-  HTTP - [First Component]
-  [Another Component]
-}
+过分强调资源，而实际业务API可能有各种需求比较复杂，单单使用资源的增删改查可能并不能有效满足使用需求，强行使用RESTful风格API只会增加开发难度和成本。
 
-node "Other Groups" {
-  FTP - [Second Component]
-  [First Component] --> FTP
-}
-
-cloud {
-  [Example 1]
-}
-
-
-database "MySql" {
-  folder "This is my folder" {
-    [Folder 3]
-  }
-  frame "Foo" {
-    [Frame 4]
-  }
-}
-
-
-[Another Component] --> [Example 1]
-[Example 1] --> [Folder 3]
-[Folder 3] --> [Frame 4]
-
-@enduml
-```
-
-</div>
-
-[Learn More](https://sli.dev/guide/syntax.html#diagrams)
+</v-clicks>
 
 
 ---
@@ -330,4 +245,4 @@ class: text-center
 
 # Learn More
 
-[Documentations](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/showcases.html)
+[rest-api-design-resource-modeling](https://www.thoughtworks.com/insights/blog/rest-api-design-resource-modeling) · [GitHub API](https://docs.github.com/cn/rest)
