@@ -112,7 +112,7 @@ rest api 是一套api设计的准则，规范了api设计的框架，使得服�
 
 restful api 规范了api设计的两大核心原则：
 1. API应该作用于 Resource（资源）上
-2. 对资源的操作应使用对应语义的几种操作，包括： GET, POST, PUT, PATCH, DELETE1
+2. 对资源的操作应使用对应语义的几种操作，包括： GET, POST, PUT, PATCH, DELETE
 
 在设计时选择正确的资源并以正确的粒度对资源进行建模非常重要，以便 API 使用者从 API 获得所需的功能，API 行为正确且 API 可维护
 <br>
